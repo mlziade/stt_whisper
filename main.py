@@ -4,7 +4,7 @@ from audio_extract import extract_audio     ## Documentation https://pypi.org/pr
 from alive_progress import alive_bar        ## Documentation https://github.com/rsalmei/alive-progress
 import time
 
-MODEL = "tiny"                              ## Possible Options https://github.com/openai/whisper?tab=readme-ov-file#available-models-and-languages    
+MODEL = "large-v3"                          ## Possible Options https://github.com/openai/whisper?tab=readme-ov-file#available-models-and-languages    
 LANGUAGE = "pt"
 
 def writeTimeStampFrom(start: str, end: str) -> list[str]:
@@ -83,7 +83,7 @@ def main():
                 result: dict= whisper.transcribe(model, audio, **options)
                 
                 ## Write result to formatted txt
-                text_path = os.path.join(path_text, audio_file).replace("mp3", "txt")
+                text_path = os.path.join(path_text, audio_file).replace(".mp3", f"_{MODEL}.txt")
                 print(f"Saving on {text_path}")
                 with open(text_path, "w", encoding="utf-8") as file:
                     for segments in result['segments']:
