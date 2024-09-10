@@ -1,0 +1,4 @@
+audio-extract
+openai-whisper
+setuptools-rust
+alive-progress
